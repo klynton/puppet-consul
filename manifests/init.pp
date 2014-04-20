@@ -29,7 +29,7 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Klynton Jessup <klynton@objectsyndicate.com>
 #
 # === Copyright
 #
@@ -37,5 +37,22 @@
 #
 class consul {
 
+  $consul_file = 'consul'
+  $consul_path = '/usr/local/'
+  $consul_version = '0.1.0'
+  $consul_os = 'linux'
+  $consul_arch = '386'
+
+  file { "$consul_file":
+    ensure => file,
+    mode => '0755',
+    path => '${consul_path}/${consul_file}'
+    source => "puppet:///modules/consul/${consul_version}/${consul_os}/${consul_arch}/${consul_file}"
+  }
+
+  file { "$consul_path":
+    ensure => directory,
+    mode => '0644',
+  }
 
 }
