@@ -42,6 +42,10 @@ class consul {
   $consul_version = '0.1.0'
   $consul_os = 'linux'
   $consul_arch = '386'
+  $consul_config_dir = ''
+  $consul_state_dir = ''
+
+
 
   file { "$consul_file":
     ensure => file,
