@@ -37,26 +37,37 @@
 #
 class consul {
 
+  File {
+    mode => '0644'
+  }
+
   $consul_file = 'consul'
-  $consul_path = '/usr/local/'
+  $consul_path = '/usr/local/bin'
   $consul_version = '0.1.0'
   $consul_os = 'linux'
   $consul_arch = '386'
-  $consul_config_dir = ''
-  $consul_state_dir = ''
+  $consul_config_dir = '/etc/consul.d'
+  $consul_state_dir = '/opt/consul'
 
 
 
   file { "$consul_file":
     ensure => file,
-    mode => '0755',
-    path => '${consul_path}/${consul_file}'
+    mode   => '0755',
+    path   => '${consul_path}/${consul_file}'
     source => "puppet:///modules/consul/${consul_version}/${consul_os}/${consul_arch}/${consul_file}"
   }
 
   file { "$consul_path":
     ensure => directory,
-    mode => '0644',
+  }
+
+  file { "$consul_config_dir":
+    ensure => directory,
+  }
+
+  file { "$consul_state_dir":
+    ensure => directory,
   }
 
 }
