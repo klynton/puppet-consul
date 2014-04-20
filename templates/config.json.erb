@@ -1,0 +1,93 @@
+# Example Configuration File
+#
+# {
+# "datacenter": "east-aws",
+# "data_dir": "/opt/consul",
+# "log_level": "INFO",
+# "node_name": "foobar",
+# "server": true
+# }
+
+
+# Configuration Key Reference
+#
+# bootstrap - Equivalent to the -bootstrap command-line flag.
+#
+# bind_addr - Equivalent to the -bind command-line flag.
+#
+# client_addr - Equivalent to the -client command-line flag.
+#
+# datacenter - Equivalent to the -dc command-line flag.
+#
+# data_dir - Equivalent to the -data-dir command-line flag.
+#
+# log_level - Equivalent to the -log-level command-line flag.
+#
+# node_name - Equivalent to the -node command-line flag.
+#
+# protocol - Equivalent to the -protocol command-line flag.
+#
+# server - Equivalent to the -server command-line flag.
+#
+# advertise_addr - The advertise address is used to change the address that we advertise to other nodes in the cluster. By default, the -bind address is advertised. However, in some cases, there may be a routable address that cannot be bound to. This flag enables gossiping a different address to support this. If this address is not routable, the node will be in a constant flapping state, as other nodes will treat the non-routability as a failure.
+#
+# ca_file - This provides a the file path to a PEM encoded certificate authority. The certificate authority is used to check the authenticity of client and server connections with the appropriate verify_incoming or verify_outgoing flags.
+#
+# cert_file - This provides a the file path to a PEM encoded certificate. The certificate is provided to clients or servers to verify the agents authenticity. Must be provided along with the key_file.
+#
+# domain - By default, Consul responds to DNS queries in the "consul." domain. This flag can be used to change that domain. All queries in this domain are assumed to be handled by Consul, and will not be recursively resolved.
+#
+# enable_debug - When set, enables some additional debugging features. Currently, only used to set the runtime profiling HTTP endpoints.
+#
+# encrypt - Specifies the secret key to use for encryption of Consul network traffic. This key must be 16-bytes that are base64 encoded. The easiest way to create an encryption key is to use consul keygen. All nodes within a cluster must share the same encryption key to communicate.
+#
+# key_file - This provides a the file path to a PEM encoded private key. The key is used with the certificate to verify the agents authenticity. Must be provided along with the cert_file.
+#
+# leave_on_terminate - If enabled, when the agent receives a TERM signal, it will send a Leave message to the rest of the cluster and gracefully leave. Defaults to false.
+#
+# ports - This is a nested object that allows setting the bind ports for the following keys:
+#
+# dns - The DNS server, -1 to disable. Default 8600.
+#
+# http - The HTTP api, -1 to disable. Default 8500.
+#
+# rpc - The RPC endpoint. Default 8400.
+#
+# serf_lan - The Serf LAN port. Default 8301.
+#
+# serf_wan - The Serf WAN port. Default 8302.
+#
+# server - Server RPC address. Default 8300.
+#
+# recursor - This flag provides an address of an upstream DNS server that is used to recursively resolve queries if they are not inside the service domain for consul. For example, a node can use Consul directly as a DNS server, and if the record is outside of the "consul." domain, the query will be resolved upstream using this server.
+#
+# skip_leave_on_interrupt - This is the similar toleave_on_terminate but only affects interrupt handling. By default, an interrupt causes Consul to gracefully leave, but setting this to true disables that. Defaults to false. Interrupts are usually from a Control-C from a shell.
+#
+# start_join - An array of strings specifying addresses of nodes to join upon startup.
+#
+# statsite_addr - This provides the address of a statsite instance. If provided Consul will stream various telemetry information to that instance for aggregation. This can be used to capture various runtime information.
+#
+# verify_incoming - If set to True, Consul requires that all incoming connections make use of TLS, and that the client provides a certificate signed by the Certificate Authority from the ca_file. By default, this is false, and Consul will not enforce the use of TLS or verify a client's authenticity. This only applies to Consul servers, since a client never has an incoming connection.
+#
+# verify_outgoing - If set to True, Consul requires that all outgoing connections make use of TLS, and that the server provide a certificate that is signed by the Certificate Authority from the ca_file. By default, this is false, and Consul will not make use of TLS for outgoing connections. This applies to clients and servers, as both will make outgoing connections.
+
+
+
+{
+<% if @bootstrap then -%>
+  "bootstrap": "<%= @boostrap %>"
+<% end -%>
+
+<% if @bind_addr then -%>
+  "bind_addr": "<%= @bind_addr %>"
+<% end -%>
+
+<% if @client_addr then -%>
+  "client_addr": "<%= @client_addr %>"
+<% end -%>
+
+<% if @datacenter then -%>
+  "datacenter": "<%= @datacenter %>"
+<% end -%>
+
+}
