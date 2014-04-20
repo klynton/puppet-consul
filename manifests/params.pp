@@ -108,3 +108,28 @@
 # verify_incoming - If set to True, Consul requires that all incoming connections make use of TLS, and that the client provides a certificate signed by the Certificate Authority from the ca_file. By default, this is false, and Consul will not enforce the use of TLS or verify a client's authenticity. This only applies to Consul servers, since a client never has an incoming connection.
 #
 # verify_outgoing - If set to True, Consul requires that all outgoing connections make use of TLS, and that the server provide a certificate that is signed by the Certificate Authority from the ca_file. By default, this is false, and Consul will not make use of TLS for outgoing connections. This applies to clients and servers, as both will make outgoing connections.
+
+class consul::params {
+
+  case $::operatingsystem {
+    'SmartOS': {
+
+    }
+
+    'RedHat': {
+
+    }
+
+    'Ubuntu': {
+
+    }
+
+    'Debian': {
+      
+    }
+
+    default: { fail("OS: ${::operatingsystem} unknown.")}
+
+  }
+
+}
