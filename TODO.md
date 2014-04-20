@@ -11,7 +11,7 @@
 - [ ] Bootstrap a cluster
 - [ ] Allow a version number to be passed in.
 - [ ] Allow an OS and architecture to be passed in.
-- [] Handle upgrades between versions some how?
+- [ ]Handle upgrades between versions some how?
 
 # Notes:
   * start, stop, and restart consul using with a service resource?
