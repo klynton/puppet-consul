@@ -111,24 +111,60 @@
 
 class consul::params {
 
-  case $::operatingsystem {
-    'SmartOS': {
+  $bootstrap               = ''
+  $bind_addr               = ''
+  $client_addr             = ''
+  $datacenter              = ''
+  $data_dir                = ''
+  $log_level               = ''
+  $node_name               = ''
+  $protocol                = ''
+  $server                  = ''
+  $advertise_addr          = ''
+  $ca_file                 = ''
+  $cert_file               = ''
+  $domain                  = ''
+  $enable_debug            = ''
+  $encrypt                 = ''
+  $key_file                = ''
+  $leave_on_terminate      = ''
+  $ports                   = ''
+  $dns                     = ''
+  $http                    = ''
+  $rpc                     = ''
+  $serf_lan                = ''
+  $serf_wan                = ''
+  $server                  = ''
+  $recursor                = ''
+  $skip_leave_on_interrupt = ''
+  $start_join              = ''
+  $statsite_addr           = ''
+  $verify_incoming         = ''
+  $verify_outgoing         = ''
 
+  case $::osfamily {
+    'Solaris': {
+      $data_dir                = ''
+      $ca_file                 = ''
+      $cert_file               = ''
+      $key_file                = ''
     }
 
     'RedHat': {
-
-    }
-
-    'Ubuntu': {
-
+      $data_dir                = ''
+      $ca_file                 = ''
+      $cert_file               = ''
+      $key_file                = ''
     }
 
     'Debian': {
-      
+      $data_dir                = ''
+      $ca_file                 = ''
+      $cert_file               = ''
+      $key_file                = ''
     }
 
-    default: { fail("OS: ${::operatingsystem} unknown.")}
+    default: { fail("OS ${::osfamily} unsupported.")}
 
   }
 
