@@ -35,7 +35,38 @@
 #
 # Copyright 2014 Klynton Jessup, unless otherwise noted.
 #
-class consul {
+class consul (
+    $bootstrap               = $consul::params::boostrap
+    $bind_addr               = $consul::params::bind_addr
+    $client_addr             = $consul::params::client_addr
+    $datacenter              = $consul::params::datacenter
+    $data_dir                = $consul::params::data_dir
+    $log_level               = $consul::params::log_level
+    $node_name               = $consul::params::node_name
+    $protocol                = $consul::params::protocol
+    $server                  = $consul::params::server
+    $advertise_addr          = $consul::params::advertise_addr
+    $ca_file                 = $consul::params::ca_file
+    $cert_file               = $consul::params::cert_file
+    $domain                  = $consul::params::domain
+    $enable_debug            = $consul::params::enable_debug
+    $encrypt                 = $consul::params::encrypt
+    $key_file                = $consul::params::key_file
+    $leave_on_terminate      = $consul::params::leave_on_terminate
+    $ports                   = $consul::params::ports
+    $dns                     = $consul::params::dns
+    $http                    = $consul::params::http
+    $rpc                     = $consul::params::rpc
+    $serf_lan                = $consul::params::serf_lan
+    $serf_wan                = $consul::params::serf_wan
+    $server                  = $consul::params::server
+    $recursor                = $consul::params::recursor
+    $skip_leave_on_interrupt = $consul::params::skip_leave_on_interrupt
+    $start_join              = $consul::params::start_join
+    $statsite_addr           = $consul::params::statsite_addr
+    $verify_incoming         = $consul::params::verify_incoming
+    $verify_outgoing         = $consul::params::verify_outgoing
+  ) inherits consul::params {
 
   File {
     mode => '0644'
